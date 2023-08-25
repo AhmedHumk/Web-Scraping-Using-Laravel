@@ -1,6 +1,6 @@
 ## BackEnd Task
 
-###### [Php Larave web scraper.](https://github.com/AhmedHumk/Web-Scraping-Using-Laravel/tree/main/BackendTask/Task1 "Php Larave web scraper.")
+###### [Php Larave web scraper.](https://github.com/AhmedHumk/Web-Scraping-Using-Laravel/tree/main/BackendTask/Task1 "Php Laravel web scraper.")
 
 The Project demonestrates how to create web scraper using php and javascript.
 

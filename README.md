@@ -8,4 +8,4 @@ The Project demonestrates how to create web scraper using php and javascript.
 - **symfony/browser-kit**
 - **symfony/http-client**
 
-###### for more details Read the [instructions Page](https://github.com/AhmedHumk/Web-Scraping-Using-Laravel/BackendTask/Instructions "instructions Page").
+###### for more details Read the [instructions Page](https://github.com/AhmedHumk/Web-Scraping-Using-Laravel/tree/main/BackendTask/Instructions "instructions Page").

@@ -13,7 +13,7 @@ Enter to your Project destination in your terminal :  `cd Task1`
 - `php artisan make:controller ScrapController`
 - `php artisan make:controller Constants`
 
-###### Constants is user to hold our constant variables that we aim to use without changes.
+###### Constants is used to hold our constant variables that we aim to use without changes.
 
 ## Step5 run the server
 - Option 1 : `php artisan serve`

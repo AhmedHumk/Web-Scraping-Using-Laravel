@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 Route::get("Scraper", [\App\Http\Controllers\ScrapController::class, "Scraper"])->name("Scraper");
+Route::get("getBookDetails", [\App\Http\Controllers\ScrapController::class, "getBookDetails"])->name("getBookDetails");

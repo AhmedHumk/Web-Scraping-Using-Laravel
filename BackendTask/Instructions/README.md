@@ -44,3 +44,22 @@ This Will Gives You A Simulation Of The Loadmore Pagination Event On The Target 
 
 ###### if you are using vs code then run the following command in terminal.
 `composer global require laravel/installer`
+
+# Testing routes in your browser to get a json formated data .
+```html
+<!-- getting the scraped books as json that shows in روايات category page by its pagination number 10. -->
+http://127.0.0.1:6753/Scraper?page=10
+```
+
+```html
+<!-- getting the scraped book details as json to view specfic book information. -->
+http://127.0.0.1:6753/getBookDetails?book_name=/book/%D8%B1%D9%88%D8%A7%D9%8A%D8%A9-%D8%A7%D9%86%D8%AA-%D9%84%D9%8A-%D8%A7%D9%84%D8%AC%D8%B2%D8%A1-%D8%A7%D9%84%D8%AB%D8%A7%D9%86%D9%8A
+```
+
+```html
+<!-- to run this project you need to laravel to your development environment.
+call this command to run 
+php artisan serve --port=[yourPort]
+http://127.0.0.1:[Your port] 
+-->
+```

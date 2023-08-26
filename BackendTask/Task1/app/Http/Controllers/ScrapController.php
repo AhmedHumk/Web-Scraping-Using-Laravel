@@ -56,14 +56,17 @@ class ScrapController extends Controller
         $results = [];
         
         $crawler->filter('.book-teaser')->each(function (Crawler $node) use (&$results) {
-            $title = $node->filter('.title a')->text();
+            $bookhref = $node->filter('.title a');
             $author = $node->filter('.author-label a')->text();
+            $title = $bookhref->text();
+            $bookUrl = $bookhref->attr('href');
 
             $insertResults = $this->InsertScrapedData($author, $title);
             
             $results[] = [
                 'title' => $title,
                 'author' => $author,
+                'bookurl' => $bookUrl,
             ];
         });
         
@@ -89,4 +92,41 @@ class ScrapController extends Controller
             return false;
         }
     }
+
+
+    public function getBookDetails(Request $request)
+    {
+    try {
+        $BookName = $request->input('book_name');
+        $bookUrl = Constants::BaseUrl.$BookName;
+        // Create a new HttpBrowser instance
+        $browser = new HttpBrowser();
+
+        // Make a GET request to the book URL
+        $crawler = $browser->request('GET', $bookUrl);
+        // Scrape the book details
+        $navItems = $crawler->filter('.book-table-info');
+        $bookPages = $navItems->filter('p')->eq(1)->text();
+        $bookLang = $navItems->filter('p')->eq(3)->text();
+        $bookDownloads = $navItems->filter('p')->eq(7)->text();
+        $bookSize =  $navItems->filter('p')->eq(5)->text();
+        $bookFileType = $navItems->filter('p')->eq(9)->text();
+        $bookPdfLink = $crawler->filter('.box-btn .download')->attr('href');
+        $bookPdfDownload = Constants::BaseUrl.$bookPdfLink;
+
+        // Return the book details as JSON response
+        return response()->json([
+            'bookPages' => $bookPages,
+            'bookLang' => $bookLang,
+            'bookSize' => $bookSize,
+            'bookDownloads' => $bookDownloads,
+            'bookFileType' => $bookFileType,
+            'bookPdfLink' => $bookPdfDownload,
+        ]);
+    } catch (\Exception $e) {
+        // Handle Exceptions
+        return response()->json(['error' => $e->getMessage()], 500);
+    }
+}
+
 }
